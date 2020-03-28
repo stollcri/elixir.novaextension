@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<completions>
+    <!-- "foo" -->
+    <provider name="identifier">
+        <syntax>elixir</syntax>
+        <selector>*:not(string,comment)</selector>
+        <expression>(?&lt;!\.)\b[a-zA-Z_][a-zA-Z0-9_]*</expression>
+        
+        <symbols type="class">
+            <behavior prefix="=\s*">
+                <append>($[])</append>
+            </behavior>
+        </symbols>
+        <symbols type="function">
+            <behavior>
+                <arguments prefix="(" suffix=")" separator=", " />
+            </behavior>
+        </symbols>
+        <symbols type="constant,variable,argument" />
+        
+        <set>elixir.keywords</set>
+        <set>elixir.values.core</set>
+        <set>elixir.classes.core</set>
+        <set>elixir.modules.core</set>
+        <set>elixir.methods.core</set>
+        <set>elixir.exceptions.core</set>
+    </provider>
+    
+    <!-- "def foo" -->
+    <provider name="method-define">
+        <syntax>elixir</syntax>
+        <selector>*:not(string,comment)</selector>
+        <expression>(?&lt;=(?:def\s))\b[a-zA-Z_][a-zA-Z0-9_]*</expression>
+        
+        <symbols type="method">
+            <behavior prefix="(?&lt;=def\s)">
+                <arguments prefix="(self" suffix=")" separator=", " prepend-separator="true" />
+            </behavior>
+            <behavior>
+                <arguments prefix="(" suffix=")" separator=", " />
+            </behavior>
+        </symbols>
+        
+        <set>elixir.methods.core</set>
+    </provider>
+    
+    <!-- ".foo" -->
+    <provider name="method-invoke">
+        <syntax>elixir</syntax>
+        <selector>*:not(string,comment)</selector>
+        <expression>(?&lt;=\.)\b[a-zA-Z_][a-zA-Z0-9_]*</expression>
+        
+        <symbols type="method">
+            <behavior>
+                <arguments prefix="(" suffix=")" separator=", " />
+            </behavior>
+        </symbols>
+        <symbols type="property" />
+        
+        <set>elixir.methods.core</set>
+    </provider>
+    
+    <!-- Keywords -->
+    <set name="elixir.keywords" symbol="statement">
+        <completion string="alias">
+            <behavior>
+                <append> $[new_name] @[name]</append>
+            </behavior>
+        </completion>
+        <completion string="and">
+            <behavior>
+                <append> $[expression]</append>
+            </behavior>
+        </completion>
+        <completion string="begin" />
+        <completion string="break" />
+        <completion string="case">
+            <behavior>
+                <append> $[expression]</append>
+            </behavior>
+        </completion>
+        <completion string="class">
+            <behavior>
+                <append> $[Name]</append>
+            </behavior>
+        </completion>
+        <completion string="def">
+            <behavior>
+                <append> $[name]</append>
+            </behavior>
+        </completion>
+        <completion string="defined?">
+            <behavior>
+                <append>($[expression])</append>
+            </behavior>
+        </completion>
+        <completion string="do" />
+        <completion string="else" />
+        <completion string="elsif">
+            <behavior>
+                <append> $[expression]</append>
+            </behavior>
+        </completion>
+        <completion string="end" />
+        <completion string="ensure" />
+        <completion string="for">
+            <behavior>
+                <append> $[item] in $[container]</append>
+            </behavior>
+        </completion>
+        <completion string="if">
+            <behavior>
+                <append> $[expression]</append>
+            </behavior>
+        </completion>
+        <completion string="in">
+            <behavior>
+                <append> $[container]</append>
+            </behavior>
+        </completion>
+        <completion string="module">
+            <behavior>
+                <append> $[Name]</append>
+            </behavior>
+        </completion>
+        <completion string="next" />
+        <completion string="not">
+            <behavior>
+                <append> $[expression]</append>
+            </behavior>
+        </completion>
+        <completion string="or">
+            <behavior>
+                <append> $[expression]</append>
+            </behavior>
+        </completion>
+        <completion string="redo" />
+        <completion string="pass" />
+        <completion string="rescue">
+            <behavior>
+                <append> $[Exception]</append>
+            </behavior>
+        </completion>
+        <completion string="retry" />
+        <completion string="return">
+            <behavior>
+                <append> $[expression]</append>
+            </behavior>
+        </completion>
+        <completion string="self" />
+        <completion string="super" />
+        <completion string="then" />
+        <completion string="undef" />
+        <completion string="unless">
+            <behavior>
+                <append> $[expression]</append>
+            </behavior>
+        </completion>
+        <completion string="until">
+            <behavior>
+                <append> $[expression]</append>
+            </behavior>
+        </completion>
+        <completion string="when">
+            <behavior>
+                <append> $[expression]</append>
+            </behavior>
+        </completion>
+        <completion string="while">
+            <behavior>
+                <append> $[expression]</append>
+            </behavior>
+        </completion>
+        <completion string="yield">
+            <behavior>
+                <append> $[expression]</append>
+            </behavior>
+        </completion>
+    </set>
+    
+    <!-- Built-in values -->
+    <set name="elixir.values.core" symbol="constant">
+        <completion string="true" />
+        <completion string="false" />
+        <completion string="nil" />
+    </set>
+    
+    <!-- Built-in classes -->
+    <set name="elixir.classes.core" symbol="class">
+        <completion string="Array" />
+        <completion string="Bignum" />
+        <completion string="BasicObject" />
+        <completion string="Object" />
+        <completion string="Module" />
+        <completion string="Class" />
+        <completion string="Complex" />
+        <completion string="NilClass" />
+        <completion string="Numeric" />
+        <completion string="String" />
+        <completion string="Float" />
+        <completion string="Fiber" />
+        <completion string="Continuation" />
+        <completion string="Dir" />
+        <completion string="File" />
+        <completion string="Encoding" />
+        <completion string="Enumerator" />
+        <completion string="IO" />
+        <completion string="Hash" />
+        <completion string="ENV" />
+        <completion string="Integer" />
+        <completion string="Fixnum" />
+        <completion string="Data" />
+        <completion string="TrueClass" />
+        <completion string="FalseClass" />
+        <completion string="Thread" />
+        <completion string="Proc" />
+        <completion string="Method" />
+        <completion string="UnboundMethod" />
+        <completion string="Binding" />
+        <completion string="Random" />
+        <completion string="Range" />
+        <completion string="Rational" />
+        <completion string="Regexp" />
+        <completion string="MatchData" />
+        <completion string="Symbol" />
+        <completion string="Struct" />
+        <completion string="ThreadGroup" />
+        <completion string="Mutex" />
+        <completion string="Time" />
+        <completion string="TracePoint" />
+        <completion string="Comparable" />
+    </set>
+    
+    <!-- Built-in modules -->
+    <set name="elixir.modules.core" symbol="package">
+        <completion string="Kernel" />
+        <completion string="Enumerable" />
+        <completion string="Errno" />
+        <completion string="FileTest" />
+        <completion string="GC" />
+        <completion string="ObjectSpace" />
+        <completion string="Marshal" />
+        <completion string="Math" />
+        <completion string="Process" />
+        <completion string="Signal" />
+    </set>
+    
+    <!-- Built-in exceptions -->
+    <set name="elixir.exceptions.core" symbol="class">
+        <completion string="FiberError" />
+        <completion string="StopIteration" />
+        <completion string="Exception" />
+        <completion string="SystemExit" />
+        <completion string="fatal" />
+        <completion string="SignalException" />
+        <completion string="Interrupt" />
+        <completion string="StandardError" />
+        <completion string="TypeError" />
+        <completion string="ArgumentError" />
+        <completion string="IndexError" />
+        <completion string="KeyError" />
+        <completion string="RangeError" />
+        <completion string="ScriptError" />
+        <completion string="SyntaxError" />
+        <completion string="LoadError" />
+        <completion string="NotImplementedError" />
+        <completion string="NameError" />
+        <completion string="NoMethodError" />
+        <completion string="RuntimeError" />
+        <completion string="SecurityError" />
+        <completion string="NoMemoryError" />
+        <completion string="EncodingError" />
+        <completion string="SystemCallError" />
+        <completion string="IOError" />
+        <completion string="EOFError" />
+        <completion string="ZeroDivisionError" />
+        <completion string="FloatDomainError" />
+        <completion string="LocalJumpError" />
+        <completion string="SystemStackError" />
+        <completion string="RegexpError" />
+        <completion string="ThreadError" />
+    </set>
+</completions>
