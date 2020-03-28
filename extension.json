@@ -2,6 +2,12 @@
     "identifier": "rustypatchedsoftware.Elixir",
     "name": "Elixir",
     "vendor": "Rusty Patched Software",
+    "description": "Syntax highlighting and code completion for Elixir files",
     "version": "0.0",
-    "categories": ["languages"]
+    "categories": ["languages"],
+    "repository": "https://github.com/stollcri/elixir.novaextension",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/stollcri/elixir.novaextension/issues"
+    }
 }
