@@ -1,3 +1,8 @@
+## Version 0.3
+
+- Fix structure of test classes and functions
+- Handle inline functions and blocks
+
 ## Version 0.2
 
 - Handle sigils

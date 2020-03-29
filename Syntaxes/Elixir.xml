@@ -178,19 +178,96 @@
 				</subscopes>
 			</scope>
 			
+		    <scope name="elixir.definition.class">
+				<symbol type="class">
+					<context behavior="start" group="class" />
+				</symbol>
+				<expression>(defmodule)\s([a-zA-Z_][a-zA-Z0-9_]*)\.([a-zA-Z_][a-zA-Z0-9_\.]*)\s(do)$</expression>
+				<capture number="1" name="elixir.keyword" />
+				<capture number="2" name="elixir.identifier.type.superclass" />
+				<capture number="3" name="elixir.identifier.class.type.name" />
+				<capture number="4" name="elixir.keyword" />
+		        <subscopes>
+					<include syntax="self" collection="comments" />
+					<include syntax="self" collection="imports" />
+					<include syntax="self" collection="definitions" />
+				</subscopes>
+			</scope>
+			
 			<scope name="elixir.definition.test.function">
 				<symbol type="function">
-					<context behavior="start" group="function" />
+					<context behavior="subtree" group="function" />
 				</symbol>
 				<starts-with>
-					<expression>(test)\s+&quot;([a-zA-Z0-9_\ ]*)&quot;</expression>
+					<expression>(test)\s+&quot;(.*)&quot;</expression>
 					<capture number="1" name="elixir.keyword" />
 					<capture number="2" name="elixir.identifier.function.name" />
+					<capture number="3" name="elixir.keyword" />
 				</starts-with>
 				<ends-with>
-					<expression>\s(do)$</expression>
+					<expression>\s(end)</expression>
 					<capture number="1" name="elixir.keyword" />
 				</ends-with>
+		        <subscopes>
+					<scope name="elixir.arguments">
+						<starts-with>
+							<expression>%\{</expression>
+							<capture number="0" name="elixir.bracket" />
+						</starts-with>
+						<ends-with>
+							<expression>\}</expression>
+							<capture number="0" name="elixir.bracket" />
+						</ends-with>
+						<subscopes>
+							<scope name="elixir.separator">
+								<expression>,</expression>
+							</scope>
+							<include syntax="self" collection="identifiers" />
+						</subscopes>
+					</scope>
+					<include syntax="self" collection="comments" />
+					<include syntax="self" collection="imports" />
+					<include syntax="self" collection="definitions" />
+					<include syntax="self" collection="values" />
+				</subscopes>
+			</scope>
+			
+			<scope name="elixir.definition.test.setup">
+				<symbol type="function">
+					<context behavior="subtree" group="function" />
+				</symbol>
+				<starts-with>
+					<expression>(setup)\s(%\{.+\}\s+)?(do)</expression>
+					<capture number="1" name="elixir.keyword" />
+					<capture number="2" name="elixir.identifier.argument.value" />
+					<capture number="3" name="elixir.keyword" />
+				</starts-with>
+				<ends-with>
+					<expression>\s(end)</expression>
+					<capture number="1" name="elixir.keyword" />
+				</ends-with>
+			</scope>
+			
+			<scope name="elixir.definition.test.class">
+				<symbol type="class">
+					<context behavior="subtree" group="class" />
+				</symbol>
+				<starts-with>
+					<expression>(describe)\s+&quot;(.*)&quot;\s+(do)</expression>
+					<capture number="1" name="elixir.keyword" />
+					<capture number="2" name="elixir.identifier.function.name" />
+					<capture number="3" name="elixir.keyword" />
+				</starts-with>
+				<ends-with>
+					<expression>\s(end)</expression>
+					<capture number="1" name="elixir.keyword" />
+				</ends-with>
+		        <subscopes>
+					<include syntax="self" collection="comments" />
+					<include syntax="self" collection="imports" />
+					<include syntax="self" collection="definitions" />
+					<include syntax="self" collection="values" />
+				</subscopes>
 			</scope>
 			
 			<scope name="elixir.definition.ecto.schema">
@@ -207,46 +284,46 @@
 					<capture number="1" name="elixir.keyword" />
 				</ends-with>
 			</scope>
-			
-		    <scope name="elixir.definition.class">
-				<symbol type="class">
-					<context behavior="start" group="class" />
-				</symbol>
-				<expression>(defmodule)\s([a-zA-Z_][a-zA-Z0-9_]*)\.([a-zA-Z_][a-zA-Z0-9_\.]*)\s(do)$</expression>
-				<capture number="1" name="elixir.keyword" />
-				<capture number="2" name="elixir.identifier.type.superclass" />
-				<capture number="3" name="elixir.identifier.class.type.name" />
-				<capture number="4" name="elixir.keyword" />
-			</scope>
-			
-			<scope name="elixir.definition.test.class">
-				<symbol type="class">
-					<context behavior="start" group="class" />
-				</symbol>
-				<starts-with>
-					<expression>(describe)\s+&quot;([a-zA-Z0-9_\ ]*)&quot;</expression>
-					<capture number="1" name="elixir.keyword" />
-					<capture number="2" name="elixir.identifier.function.name" />
-				</starts-with>
-				<ends-with>
-					<expression>\s(do)$</expression>
-					<capture number="1" name="elixir.keyword" />
-				</ends-with>
-			</scope>
-			
+
 			<scope name="elixir.definition.block">
 				<symbol type="block">
 					<context behavior="start" />
 				</symbol>
-				<expression>\b(case|cond|for|try)\b</expression>
+				<expression>\b(case|cond|try).+(do)?\b</expression>
 				<capture number="1" name="elixir.keyword" />
+				<capture number="2" name="elixir.keyword" />
 			</scope>
 			
 			<scope name="elixir.definition.block-next">
 				<symbol type="block">
 					<context behavior="next" />
 				</symbol>
-				<expression>\b([a-zA-Z_][a-zA-Z0-9_]*)->\b</expression>
+				<expression>\b([a-zA-Z_][a-zA-Z0-9_]*)\s->\b</expression>
+				<capture number="1" name="elixir.keyword" />
+			</scope>
+			
+			<scope name="elixir.definition.end">
+				<symbol type="block">
+					<context behavior="end" />
+				</symbol>
+				<expression>\b(end)\b</expression>
+				<capture number="1" name="elixir.keyword" />
+			</scope>
+			
+			<scope name="elixir.definition.block">
+				<symbol type="block">
+					<context behavior="start" />
+				</symbol>
+				<expression>\b(fn)\b</expression>
+				<capture number="1" name="elixir.keyword" />
+				<capture number="2" name="elixir.keyword" />
+			</scope>
+			
+			<scope name="elixir.definition.block-next">
+				<symbol type="block">
+					<context behavior="next" />
+				</symbol>
+				<expression>\b([a-zA-Z_][a-zA-Z0-9_]*)\s->\b</expression>
 				<capture number="1" name="elixir.keyword" />
 			</scope>
 			
