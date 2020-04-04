@@ -1,3 +1,8 @@
+## Version 0.4
+
+- Handle single line function declarations
+- Highlight mix.exs files
+
 ## Version 0.3
 
 - Fix structure of test classes and functions
