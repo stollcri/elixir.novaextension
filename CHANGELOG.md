@@ -1,3 +1,8 @@
+## Version 0.5
+
+- Improve block (module/function/block) detection and handling
+- Improve handling of sigils
+
 ## Version 0.4
 
 - Handle single line function declarations
