@@ -1,3 +1,7 @@
+## Version 0.6
+
+- Additional reserved words (https://github.com/stollcri/elixir.novaextension/pull/4#event-3798519959)
+
 ## Version 0.5
 
 - Improve block (module/function/block) detection and handling
