@@ -72,15 +72,32 @@
 				<string>end</string>
 				<string>catch</string>
 				<string>rescue</string>
+				<string>raise</string>
+				<string>throw</string>
 				<string>after</string>
 				<string>else</string>
+				<string>for</string>
+				<string>with</string>
+				<string>receive</string>
+				<string>exit</string>
+				<string>super</string>
 				<!-- definitions -->
 				<string>def</string>
 				<string>defp</string>
 				<string>defdelegate</string>
 				<string>defmacro</string>
 				<string>defstruct</string>
+				<string>defprotocol</string>
+				<string>defimpl</string>
+				<string>defrecord</string>
+				<string>defrecordp</string>
+				<string>defcallback</string>
+				<string>defexception</string>
+				<string>defoverridable</string>
+				<string>defguard</string>
+				<string>defguardp</string>
 				<string>quote</string>
+				<string>unquote</string>
 				<!-- testing -->
 				<string>describe</string>
 				<string>test</string>
