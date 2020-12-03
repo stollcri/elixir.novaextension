@@ -500,6 +500,27 @@
 					<include syntax="self" collection="syntax" />
 				</subscopes>
 			</scope>
+						
+			<scope name="elixir.value.struct">
+				<symbol type="struct">
+					<context behavior="subtree" />
+				</symbol>
+				<starts-with>
+					<expression>(\%[\w_]+)(\{)</expression>
+					<capture number="1" name="elixir.struct.identifier" />
+					<capture number="2" name="elixir.bracket" />
+				</starts-with>
+				<ends-with>
+					<expression>\}</expression>
+					<capture number="0" name="elixir.bracket" />
+				</ends-with>
+				<subscopes>
+					<include syntax="self" collection="comments" />
+					<include syntax="self" collection="values" />
+					<include syntax="self" collection="identifiers" />
+					<include syntax="self" collection="syntax" />
+				</subscopes>
+			</scope>
 		</collection>
 		
 		<!-- Strings -->
