@@ -31,7 +31,6 @@
 	</comments>
 	
 	<brackets>
-		<pair open="%{" close="}" />
 		<pair open="{" close="}" />
 		<pair open="[" close="]" />
 		<pair open="(" close=")" />
@@ -39,7 +38,6 @@
 	</brackets>
 	
 	<surrounding-pairs>
-		<pair open="%{" close="}" />
 		<pair open="{" close="}" />
 		<pair open="[" close="]" />
 		<pair open="(" close=")" />
