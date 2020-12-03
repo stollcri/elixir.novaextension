@@ -482,7 +482,7 @@
 			</scope>
 			
 			<scope name="elixir.value.map">
-				<symbol type="expression">
+				<symbol type="struct">
 					<context behavior="subtree" />
 				</symbol>
 				<starts-with>
