@@ -1,3 +1,10 @@
+## Version 0.7
+
+- [Improve Syntax Highlighting](https://github.com/stollcri/elixir.novaextension/pull/7)
+	- Change elixir.value.map's type to struct
+	- Add scope for structs
+	- Remove unusable pairs
+
 ## Version 0.6
 
 - Additional reserved words (https://github.com/stollcri/elixir.novaextension/pull/4#event-3798519959)
