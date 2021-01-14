@@ -1,3 +1,7 @@
+## Version 0.8
+
+- Changes for Nova 4
+
 ## Version 0.7
 
 - [Improve Syntax Highlighting](https://github.com/stollcri/elixir.novaextension/pull/7)

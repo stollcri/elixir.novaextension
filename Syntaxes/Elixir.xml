@@ -253,8 +253,6 @@
 				<starts-with>
 					<expression>(defmacro)</expression>
 					<capture number="1" name="elixir.keyword" />
-					<capture number="2" name="elixir.identifier.function.name" />
-					<capture number="3" name="elixir.keyword" />
 				</starts-with>
 				<ends-with>
 					<expression>\s(do)</expression>
@@ -292,7 +290,6 @@
 					<expression>(test)\s+&quot;(.*)&quot;</expression>
 					<capture number="1" name="elixir.keyword" />
 					<capture number="2" name="elixir.identifier.function.name" />
-					<capture number="3" name="elixir.keyword" />
 				</starts-with>
 				<ends-with>
 					<expression>\s(do)</expression>
@@ -678,21 +675,6 @@
 		<collection name="identifiers">
 			<scope name="elixir.identifier.variable.instance">
 				<expression>@[a-z][A-Za-z0-9_]*</expression>
-			</scope>
-			<scope name="elixir.identifier.core.module">
-				<strings>
-					<!-- <string>Atom</string> -->
-				</strings>
-			</scope>
-			<scope name="elixir.identifier.core.class">
-				<strings>
-					<!-- <string>Atom</string> -->
-				</strings>
-			</scope>
-			<scope name="elixir.identifier.core.function">
-				<strings>
-					<!-- <string>Atom</string> -->
-				</strings>
 			</scope>
 			
 			<scope name="elixir.function.docstring">
